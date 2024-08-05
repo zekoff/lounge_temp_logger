@@ -33,13 +33,17 @@ let cooling = false
 let lastTemp = 0
 let logging = false
 led.setBrightness(127)
+// 50%
+let interval = 600000
+// 10 minutes
 logging = false
 basic.showIcon(IconNames.No)
 datalogger.setColumnTitles(
 "temperature",
 "cooling"
 )
-loops.everyInterval(60000, function () {
+// Main loop
+loops.everyInterval(interval, function () {
     if (logging) {
         basic.showIcon(IconNames.SmallDiamond)
         lastTemp = input.temperature() * (9 / 5) + 32
