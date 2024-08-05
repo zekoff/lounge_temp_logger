@@ -1,11 +1,12 @@
 {
-    "name": "data_logger_v2",
+    "name": "lounge_temp_logger",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "datalogger": "*"
+        "datalogger": "*",
+        "audio-recording": "*"
     },
     "files": [
         "main.blocks",

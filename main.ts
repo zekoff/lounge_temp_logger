@@ -9,26 +9,44 @@ datalogger.onLogFull(function () {
         `)
 })
 input.onButtonPressed(Button.A, function () {
-    logging = true
-    basic.showIcon(IconNames.Yes)
-})
-input.onButtonPressed(Button.AB, function () {
-    logging = false
-    basic.showIcon(IconNames.No)
-})
-input.onButtonPressed(Button.B, function () {
     basic.showNumber(lastTemp)
 })
+input.onButtonPressed(Button.AB, function () {
+    logging = !(logging)
+    if (logging) {
+        basic.showIcon(IconNames.Yes)
+        basic.clearScreen()
+    } else {
+        basic.showIcon(IconNames.No)
+    }
+})
+input.onButtonPressed(Button.B, function () {
+    cooling = !(cooling)
+    basic.clearScreen()
+    if (cooling) {
+        basic.showString("AC ON")
+    } else {
+        basic.showString("AC OFF")
+    }
+})
+let cooling = false
 let lastTemp = 0
 let logging = false
+led.setBrightness(127)
 logging = false
 basic.showIcon(IconNames.No)
-datalogger.setColumnTitles("temperature")
-loops.everyInterval(10000, function () {
+datalogger.setColumnTitles(
+"temperature",
+"cooling"
+)
+loops.everyInterval(60000, function () {
     if (logging) {
-        basic.showIcon(IconNames.Heart)
+        basic.showIcon(IconNames.SmallDiamond)
         lastTemp = input.temperature() * (9 / 5) + 32
-        datalogger.log(datalogger.createCV("temperature", lastTemp))
+        datalogger.log(
+        datalogger.createCV("temperature", lastTemp),
+        datalogger.createCV("cooling", cooling)
+        )
         basic.clearScreen()
     }
 })
