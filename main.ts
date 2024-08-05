@@ -10,6 +10,7 @@ datalogger.onLogFull(function () {
 })
 input.onButtonPressed(Button.A, function () {
     basic.showNumber(lastTemp)
+    basic.clearScreen()
 })
 input.onButtonPressed(Button.AB, function () {
     logging = !(logging)
@@ -28,6 +29,7 @@ input.onButtonPressed(Button.B, function () {
     } else {
         basic.showString("AC OFF")
     }
+    basic.clearScreen()
 })
 let cooling = false
 let lastTemp = 0
