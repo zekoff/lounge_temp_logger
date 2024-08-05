@@ -6,7 +6,8 @@
         "radio": "*",
         "microphone": "*",
         "datalogger": "*",
-        "audio-recording": "*"
+        "audio-recording": "*",
+        "microbit-pxt-timeanddate": "github:bsiever/microbit-pxt-timeanddate#v2.0.33"
     },
     "files": [
         "main.blocks",
